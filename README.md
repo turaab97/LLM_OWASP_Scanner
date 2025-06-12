@@ -88,7 +88,10 @@ DEEPSEEK_API_KEY=your_deepseek_api_key_here
 
 ### 4. Run the Application
 ```bash
-streamlit run app.py
+streamlit run llm_prompt_scanner_app.py # for Together AI
+streamlit run multi_provider_scanner.py # for other AI Models
+
+
 ```
 
 The app will open in your browser at `http://localhost:8501`
