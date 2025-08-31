@@ -1,0 +1,32 @@
+version: 1
+rules:
+  - id: P1
+    name: Secret leakage
+    match:
+      any:
+        - regex: "\\bsk-[A-Za-z0-9_-]{20,}\\b"
+        - regex: "\\bAKIA[0-9A-Z]{16}\\b"
+        - regex: "(?i)password"
+    severity: High
+    rationale: "Secrets must not be present or requested."
+    recommendation: "Mask secrets and refuse disclosure."
+
+  - id: P2
+    name: Prompt injection
+    match:
+      any:
+        - regex: "(?i)ignore (all )?previous (rules|instructions)"
+        - regex: "(?i)disregard (the )?above (policy|system)"
+    severity: High
+    rationale: "Attempts to subvert system instructions."
+    recommendation: "Enforce boundary and role separation."
+
+  - id: P3
+    name: DoS / token abuse
+    match:
+      any:
+        - regex: "(?i)repeat .* (forever|infinite|100000)"
+    severity: Medium
+    rationale: "Abusive token generation."
+    recommendation: "Cap tokens and throttle."
+
